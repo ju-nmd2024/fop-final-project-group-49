@@ -7,11 +7,11 @@ Different types of platforms are included, such as:
     	Moving platforms: Move left and right or up and down
     	Breaking platforms: Break and disappear when jumped on
 If the character misses a platform and falls to the bottom of the screen, the player loses the game
-The player’s score increases as the character reaches higher points in the game
-The current score is displayed continuously on the screen
-The game includes a start screen and an end/result screen                                                               PARTIAL
+The player’s score increases as the character reaches higher points in the game                                          PARTIAL // LINK WITH PLATFORM COLLISION
+The current score is displayed continuously on the screen                                                                COMPLETE
+The game includes a start screen and an end/result screen                                                                PARTIAL // ADD END SCREEN AFTER PLATFORM COLLISION & FALLING OFF SCREEN
 The game can be replayed multiple times 
 
 
 Last Updated: 28/11/24
-2/13 Requirements Completed
+3/13 Requirements Completed
