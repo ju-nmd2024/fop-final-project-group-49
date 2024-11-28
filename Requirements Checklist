@@ -1,0 +1,17 @@
+The player controls a character that can move left and right using keyboard controls (e.g., arrow keys or A and D keys) COMPLETE
+The character automatically jumps upwards                                                                               COMPLETE
+The objective is to guide the character upward by landing on platforms without falling off the bottom of the screen
+The game area consists of various platforms that appear randomly and scroll downward as the character progresses upward
+Different types of platforms are included, such as:
+    	Normal platforms: Remain stationary when jumped on                                                                
+    	Moving platforms: Move left and right or up and down
+    	Breaking platforms: Break and disappear when jumped on
+If the character misses a platform and falls to the bottom of the screen, the player loses the game
+The player’s score increases as the character reaches higher points in the game
+The current score is displayed continuously on the screen
+The game includes a start screen and an end/result screen
+The game can be replayed multiple times 
+
+
+Last Updated: 28/11/24
+2/13 Requirements Completed
