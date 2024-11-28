@@ -9,7 +9,7 @@ Different types of platforms are included, such as:
 If the character misses a platform and falls to the bottom of the screen, the player loses the game
 The player’s score increases as the character reaches higher points in the game
 The current score is displayed continuously on the screen
-The game includes a start screen and an end/result screen
+The game includes a start screen and an end/result screen                                                               PARTIAL
 The game can be replayed multiple times 
 
 
