@@ -2,8 +2,8 @@ class DoodleGuy {
   constructor() {
     this.x = 200;
     this.y = 500;
-    this.height = 40;
-    this.width = 60;
+    this.height = 60;
+    this.width = 40;
 
     this.velocity = 0;
     this.gravity = 0.5;
@@ -38,6 +38,12 @@ class DoodleGuy {
   doodleJump() {
     this.velocity -= this.jumpheight;
   }
+  doodleDraw() {
+    push();
+    fill(255, 255, 255);
+    rect(this.x, this.y, this.width, this.height);
+    pop();
+  }
 }
 
 class Platform {
@@ -48,13 +54,24 @@ class Platform {
     this.height = 15;
     this.width = 60;
   }
+
+  platformDraw() {
+    push();
+    fill(100, 255, 100);
+    rect(this.x, this.y, this.width, this.height);
+    pop();
+  }
 }
 
 let doodleguy;
 let platforms = [];
 
 function setup() {
-  createCanvas(400, 600);
+  canvasX = 400;
+  canvasY = 600;
+
+  createCanvas(canvasX, canvasY);
+
   doodleguy = new DoodleGuy();
 
   //adds platforms
@@ -68,19 +85,45 @@ function setup() {
   }
 }
 
+let gameState = 0;
+
 function draw() {
   background(0);
+  if (gameState === 1) {
+    //Draw doodleguy
+    doodleguy.doodleDraw();
+    doodleguy.doodleMovement();
 
-  //Draw doodleguy
-  rect(doodleguy.x, doodleguy.y, doodleguy.height, doodleguy.width);
+    for (let platform of platforms) {
+      //draw platforms
+      platform.platformDraw();
+    }
+  } else {
+    drawButton();
+  }
+}
 
-  doodleguy.doodleMovement();
+function drawButton() {
+  push();
+  rectMode(CENTER);
+  fill(255);
+  rect(canvasX / 2, canvasY / 2, 200, 100);
+  pop();
 
-  for (let platform of platforms) {
-    //draw platforms
-    push();
-    fill(100, 255, 100);
-    rect(platform.x, platform.y, platform.width, platform.height);
-    pop();
+  fill(0);
+  textAlign(CENTER, CENTER); //Center align button text
+  textSize(24); //Set the text size
+  text("START", canvasX / 2, canvasY / 2); //Position the text at the button center
+}
+
+function mousePressed() {
+  // Check if the mouse is within the rectangle boundaries
+  if (
+    mouseX >= canvasX / 2 - 100 &&
+    mouseX <= canvasX / 2 + 100 &&
+    mouseY >= canvasY / 2 - 50 &&
+    mouseY <= canvasY / 2 + 50
+  ) {
+    gameState = 1; // Start the game
   }
 }
