@@ -93,6 +93,7 @@ function draw() {
     //Draw doodleguy
     doodleguy.doodleDraw();
     doodleguy.doodleMovement();
+    scoreKeeping();
 
     for (let platform of platforms) {
       //draw platforms
@@ -126,4 +127,13 @@ function mousePressed() {
   ) {
     gameState = 1; // Start the game
   }
+}
+
+function scoreKeeping() {
+  let score = 0;
+
+  fill(255, 255, 255);
+  textAlign(CENTER, CENTER); //Center align button text
+  textSize(24); //Set the text size
+  text(score, canvasX / 2, canvasY / 15);
 }
