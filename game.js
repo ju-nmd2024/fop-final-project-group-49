@@ -1,3 +1,8 @@
+let doodleguy;
+let platforms = [];
+let score = 0;
+let platformSpaceFactor = 1.3;
+
 class DoodleGuy {
   constructor() {
     this.x = 200;
@@ -9,21 +14,14 @@ class DoodleGuy {
     this.gravity = 0.5;
 
     this.jumpheight = 15;
-
-    this.bottomScreen = 500;
   }
-
   //Handles movement of the doodleguy character
   doodleMovement() {
     //Creates a falling effect on doodleguy
     this.velocity += this.gravity;
     this.y += this.velocity;
-    //auto jump at the bottom of screen'
-    //note: change this when adding platform collision
-    if (this.y >= this.bottomScreen) {
-      this.y = this.bottomScreen;
-      this.doodleJump();
-    }
+
+    this.platformCollision();
 
     //D key moves right
     if (keyIsDown(68)) {
@@ -44,6 +42,29 @@ class DoodleGuy {
     rect(this.x, this.y, this.width, this.height);
     pop();
   }
+
+  platformCollision() {
+    //note: review readability
+    for (let platform of platforms) {
+      //Check if doodleguy is in platform bouinds
+      if (
+        //checks bottom of doodle guy is above or equal to height of the top part platform
+        this.y + this.height <= platform.y + platform.height &&
+        //checks bottom of doodle guy after velcoity + grav is applied is below or same level as platform
+        this.y + this.height + this.velocity >= platform.y &&
+        //checks doodle guy is aligned horizontally with platform for his right edge
+        this.x + this.width > platform.x &&
+        //left edge
+        this.x < platform.x + platform.width
+      ) {
+        //Put dodleguty on the top of the paltform
+        this.y = platform.y - this.height;
+        //Stop velocity
+        this.velocity = 0;
+        this.doodleJump();
+      }
+    }
+  }
 }
 
 class Platform {
@@ -56,15 +77,10 @@ class Platform {
   }
 
   platformDraw() {
-    push();
     fill(100, 255, 100);
     rect(this.x, this.y, this.width, this.height);
-    pop();
   }
 }
-
-let doodleguy;
-let platforms = [];
 
 function setup() {
   canvasX = 400;
@@ -75,12 +91,15 @@ function setup() {
   doodleguy = new DoodleGuy();
 
   //adds platforms
-  let maxPlatforms = 4;
+  let maxPlatforms = 5;
   let platSpace = height / maxPlatforms;
 
+  platforms.push(new Platform(doodleguy.x, doodleguy.y + 60));
+
   for (let i = 1; i <= maxPlatforms; i++) {
-    let x = random(200);
-    let y = (i * platSpace) / 1.3;
+    let x = random(width);
+    let y = (i * platSpace) / platformSpaceFactor;
+
     platforms.push(new Platform(x, y));
   }
 }
@@ -105,11 +124,9 @@ function draw() {
 }
 
 function drawButton() {
-  push();
   rectMode(CENTER);
   fill(255);
   rect(canvasX / 2, canvasY / 2, 200, 100);
-  pop();
 
   fill(0);
   textAlign(CENTER, CENTER); //Center align button text
@@ -130,8 +147,6 @@ function mousePressed() {
 }
 
 function scoreKeeping() {
-  let score = 0;
-
   fill(255, 255, 255);
   textAlign(CENTER, CENTER); //Center align button text
   textSize(24); //Set the text size
