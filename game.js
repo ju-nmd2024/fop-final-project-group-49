@@ -1,12 +1,11 @@
 let doodleguy;
 let platforms = [];
 let score = 0;
-let platformSpaceFactor = 1.3;
 
 class DoodleGuy {
   constructor() {
     this.x = 200;
-    this.y = 500;
+    this.y = 350;
     this.height = 60;
     this.width = 40;
 
@@ -44,6 +43,7 @@ class DoodleGuy {
   }
 
   platformCollision() {
+    let spaceCalc = this.height - 30;
     //note: review readability
     for (let platform of platforms) {
       //Check if doodleguy is in platform bouinds
@@ -58,7 +58,7 @@ class DoodleGuy {
         this.x < platform.x + platform.width
       ) {
         //Put dodleguty on the top of the paltform
-        this.y = platform.y - this.height;
+        this.y = platform.y - spaceCalc;
         //Stop velocity
         this.velocity = 0;
         this.doodleJump();
@@ -93,15 +93,26 @@ function setup() {
   //adds platforms
   let maxPlatforms = 5;
   let platSpace = height / maxPlatforms;
+  let platformSpaceFactor = 100;
 
+  //First platform
   platforms.push(new Platform(doodleguy.x, doodleguy.y + 60));
 
+  //tracks previous platform
+  let prevPlatform = doodleguy.y + 60;
+
+  //generates platforms after the y pos of the previous platform
   for (let i = 1; i <= maxPlatforms; i++) {
-    let x = random(width);
-    let y = (i * platSpace) / platformSpaceFactor;
+    let x = random(400 - 50);
+    let y = prevPlatform - platformSpaceFactor;
 
     platforms.push(new Platform(x, y));
+    prevPlatform = y;
   }
+
+  //NOTE ENDLESS PLATFORMS
+  //as doodle guy moves up screen add platforms from array and delete ones from the start
+  //-1 from platforms, push new platform to array
 }
 
 let gameState = 0;
