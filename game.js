@@ -25,7 +25,7 @@ class DoodleGuy {
     this.width = 40;
 
     this.velocity = 0;
-    this.gravity = 0.6;
+    this.gravity = 0.3;
 
     this.jumpheight = 17;
 
