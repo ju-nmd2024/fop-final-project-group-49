@@ -27,7 +27,7 @@ class DoodleGuy {
     this.velocity = 0;
     this.gravity = 0.3;
 
-    this.jumpheight = 17;
+    this.jumpheight = 10;
 
     //sets the last platform as null to not increment score on collision
     this.lastPlatform = null;
