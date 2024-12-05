@@ -177,8 +177,11 @@ class Platform {
 }
 
 function setup() {
-  canvasX = 400;
-  canvasY = 600;
+  //canvasX = 400;
+  //canvasY = 600;
+
+  canvasX = 960;
+  canvasY = 540;
 
   createCanvas(canvasX, canvasY);
 }
