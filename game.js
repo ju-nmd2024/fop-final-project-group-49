@@ -102,8 +102,8 @@ class DoodleGuy {
             score += 1;
             this.lastPlatform = platform;
           }
-          this.doodleJump();
         }
+        this.doodleJump();
       }
     }
   }
