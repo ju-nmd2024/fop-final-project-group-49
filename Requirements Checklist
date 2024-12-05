@@ -3,15 +3,15 @@ The character automatically jumps upwards                                       
 The objective is to guide the character upward by landing on platforms without falling off the bottom of the screen     COMPLETE
 The game area consists of various platforms that appear randomly and scroll downward as the character progresses upward COMPLETE
 Different types of platforms are included, such as:
-    	Normal platforms: Remain stationary when jumped on                                                                
-    	Moving platforms: Move left and right or up and down
-    	Breaking platforms: Break and disappear when jumped on
-If the character misses a platform and falls to the bottom of the screen, the player loses the game
-The player’s score increases as the character reaches higher points in the game                                          COMPLETE
-The current score is displayed continuously on the screen                                                                COMPLETE
-The game includes a start screen and an end/result screen                                                                PARTIAL // ADD END SCREEN AFTER PLATFORM COLLISION & FALLING OFF SCREEN
+    	Normal platforms: Remain stationary when jumped on                                                              COMPLETE  
+    	Moving platforms: Move left and right or up and down                                                            COMPLETE
+    	Breaking platforms: Break and disappear when jumped on                                                          COMPLETE 
+If the character misses a platform and falls to the bottom of the screen, the player loses the game                     COMPLETE
+The player’s score increases as the character reaches higher points in the game                                         COMPLETE
+The current score is displayed continuously on the screen                                                               COMPLETE
+The game includes a start screen and an end/result screen                                                               COMPLETE
 The game can be replayed multiple times 
 
 
-Last Updated: 2/12/24
-6/13 Requirements Completed
+Last Updated: 5/12/24
+12/12 Requirements Completed
