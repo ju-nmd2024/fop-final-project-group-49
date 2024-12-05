@@ -179,7 +179,7 @@ class Platform {
 function setup() {
   canvasX = 400;
   canvasY = 600;
-  
+
   createCanvas(canvasX, canvasY);
 }
 //draw function
@@ -206,7 +206,6 @@ function draw() {
     drawButton();
   }
 }
-
 
 function scrollUp() {
   //Check if doodleguy moves above screen midpoint
@@ -332,4 +331,3 @@ function mousePressed() {
     }
   }
 }
-
