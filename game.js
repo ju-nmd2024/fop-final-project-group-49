@@ -75,6 +75,7 @@ class DoodleGuy {
   platformCollision() {
     let spaceCalc = this.height - 30;
     for (let platform of platforms) {
+      if (platform.type === "breakable" && platform.isBroken) continue;
       //Check if doodleguy is in platform bouinds
       if (
         //checks bottom of doodle guy is above or equal to height of the top part platform
